@@ -5,6 +5,49 @@
   <title>OnlineShop - Produit</title>
 </head>
 <body>
-<!-- TODO -->
+    <header>
+      <div id="logo">
+        <a href="index.html"><img src="./assets/img/logo.svg" alt="OnlineShop"></a>
+      </div>
+      <nav>
+        <ul id="menu">
+          <li><a href="index.html">Acceuil</a></li>
+          <li><a href="products.html">Produits</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="shopping-cart.html">Panier</a></li>
+        </ul>
+      </nav>
+    </header>
+      <section>
+        <header>
+          <h2>Apple TV</h2>
+        </header>
+        <main>
+          <img src="assets/img/apple-tv.png" alt="Apple TV">
+          <p>
+              L'Apple TV est un appareil conçu par Apple qui permet la communication sans fil entre un ordinateur et un téléviseur. Il est disponible depuis fin mars 2007 dans sa première version.L'appareil ressemble alors par sa forme à un Mac mini, bien qu'il ne fasse que la moitié de sa hauteur. Il communique par réseau sans fil ou Ethernet, avec un appareil iOS ou avec un ordinateur (sous Mac OS X ou sous Windows) par le biais du logiciel iTunes, permettant ainsi de diffuser le contenu vidéo et audio sur le téléviseur, via éventuellement un amplificateur audio-vidéo. (<a href='https://fr.wikipedia.org/wiki/Apple_TV' target='_blank'>Wikipédia</a>)
+          </p>
+          <ul>
+            <li>Processeur Apple A8</li>
+            <li>Mémoire vide de 2Go</li>
+            <li>Stockage de 32 ou 64 Go en mémoire flash</li>
+            <li>Connectivités: USB Type-C, HDMI, récepteur infrarouge</li>
+            <li>Réseau: Wi-Fi (802.11a/b/g/n/ac), 10/100 Ethernet, Bluetooth, AirPlay</li>
+          </ul>
+        </main>
+        <footer>
+          <data value="249.99">249.99</data>
+        </footer>
+      </section>
+      <section>
+        <h1>Ajouter au panier</h1>
+        <form action="/action.php" method="post" id="form-ajouter-panier">
+            <input id="quantite-produit" value="1" type="number" min="1">
+            <button id="ajouet-panier" type="button">Ajouer au panier</button>
+        </form>
+      </section>
+    <footer>
+        <p>Oualid Mazouzi 1548314 - Yves Israel</p>
+    </footer>
 </body>
 </html>
