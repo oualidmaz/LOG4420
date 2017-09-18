@@ -6,5 +6,41 @@
 </head>
 <body>
 <!-- TODO -->
+<header>
+  <div id="logo">
+    <a href="index.html"><img src="./assets/img/logo.svg" alt="OnlineShop"></a>
+  </div>
+  <nav>
+    <h1>Menu principal</h1>
+    <ul id="menu">
+      <li><a href="index.html">Acceuil</a></li>
+      <li><a href="products.html">Produits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="shopping-cart.html">Panier</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <form action="confirmation.html" method="post">
+    <p><i>Complétez le formulaire</i> </p>
+    <fieldset>
+      <legend>Contact </legend>
+      <label for="first-name">Pr&eacute;nom<em>*</em></label><input id="first-name" placeholder="Pr&eacute;nom" autofocus required><br>
+      <label for="last-name">Nom<em>*</em></label><input id="last-name" required><br>
+      <label for="email"> Courriel <em>*</em></label><input id="email" type="email" required placeholder="Email"><br>
+      <label for="phone">Téléphone</label><input id="phone" type="tel"  placeholder="(xxx)xxx-xxxx" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}"><br>
+    </fieldset>
+    <fieldset>
+      <legend>Paiement</legend>
+      <label for="credit-card">Numero de carte de cr&eacute;dit<em>*</em></label><input id="credit-card" required pattern="[0-9]{16}" placeholder="Numero de carte de cr&eacute;dit"><br>
+      <label for="credit-card-expiry">Date d’expiration de la carte</label><input id="credit-card-expiry" required type="date" placeholder="Date d’expiration de la carte"><br>
+
+    </fieldset>
+    <p><input type="submit" value="Payer"></p>
+  </form>
+</main>
+<footer>
+  <p>Oualid Mazouzi 1548314 - Yves Israel Ngudie 1719325</p>
+</footer>
 </body>
 </html>
