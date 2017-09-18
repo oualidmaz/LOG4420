@@ -21,13 +21,14 @@
   </nav>
 </header>
 <main>
+  <h1>Commande</h1>
   <form action="confirmation.html" method="post">
-    <p><i>Complétez le formulaire</i> </p>
+
     <fieldset>
       <legend>Contact </legend>
       <label for="first-name">Pr&eacute;nom<em>*</em></label><input id="first-name" placeholder="Pr&eacute;nom" autofocus required><br>
       <label for="last-name">Nom<em>*</em></label><input id="last-name" required><br>
-      <label for="email"> Courriel <em>*</em></label><input id="email" type="email" required placeholder="Email"><br>
+      <label for="email"> Courriel <em>*</em></label><input id="email" type="email" required placeholder="Email" data-val="true" data-val-email="The Email Address field is not a valid e-mail address."><br>
       <label for="phone">Téléphone</label><input id="phone" type="tel"  placeholder="(xxx)xxx-xxxx" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}"><br>
     </fieldset>
     <fieldset>
