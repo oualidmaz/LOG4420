@@ -279,6 +279,10 @@ main>article {
   display: block;
 }
 
+.contact p{
+    text-align: center;
+}
+
 .hide {
   display: none;
 }
@@ -407,7 +411,7 @@ label.form-control {
   content: "";
   margin: 20px 0;
   display: block;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px dotted #bbb;
 }
 
 #products-list a:hover {
