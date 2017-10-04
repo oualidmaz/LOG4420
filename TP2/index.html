@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>OnlineShop - Accueil</title>
+  <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
   <header>
@@ -11,23 +14,34 @@
     </a>
     <nav>
       <ul>
-      	<li><a href="./index.html">Accueil</a></li>
+      	<li><a class="active" href="./index.html">Accueil</a></li>
       	<li><a href="./products.html">Produits</a></li>
       	<li><a href="./contact.html">Contact</a></li>
-      	<li><a href="./shopping-cart.html">Panier</a></li>
+      	<li>
+          <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+            </span>
+            <span class="count">3</span>
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
   <main>
     <article>
       <h1>Le site n&deg;1 pour les achats en ligne!</h1>
+      <div class="clearfix"></div>
       <img alt="home" src="./assets/img/home.png" id="home-img">
+    </div>
       <p>Découvrez nos différents produits au meilleur prix.</p>
-      <a class="btn" href="./products.html">En savoir plus</a>
+      <br>
+      <a class="btn" href="./products.html">En savoir plus &raquo;</a>
     </article>
   </main>
   <footer>
-    <p>Par Antoine Béland et Konstantinos Lambrou-Latreille</p>
+      <p>Oualid Mazouzi 1548314 - Yves Israel Ngudie 1719325</p>
   </footer>
 </body>
 </html>
