@@ -126,11 +126,6 @@ nav ul li .active {
     transition: background-color 0.2s ease-out;
 }
 
-#home-img{
-    height: 400px;
-    float: right;
-    margin: 0 0 10px 10px;
-}
 
 .btn-group{
     margin-top:10px;
@@ -168,6 +163,11 @@ nav ul li .active {
 
 .btn-group .selected{
     background-color: #ddf2fb;
+}
+
+.home-page > img {
+    height: 400px;
+    float: right;
 }
 
 .flex {
