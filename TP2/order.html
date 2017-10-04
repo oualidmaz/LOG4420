@@ -31,36 +31,36 @@
   <main>
     <article>
       <h1>Commande</h1>
-      <form id="order-form" class="form-horizontal" action="./confirmation.html" method="post">
-        <section>
+      <form id="order-form"  action="./confirmation.html" method="post">
+        <section class="row">
           <h2>Contact</h2>
-          <div class="form-group">
+          <div class="col">
             <label for="first-name"  class="form-control" >Prénom</label>
             <input id="first-name" name="first-name" class="form-control" type="text" placeholder="Prénom" required>
           </div>
 
-          <div class="form-group">
+          <div class="col">
             <label for="last-name" class="form-control">Nom</label>
             <input id="last-name" name="last-name" class="form-control" type="text" placeholder="Nom" required>
           </div>
 
-          <div class="form-group">
+          <div class="col">
             <label for="email" class="form-control">Adresse courriel</label>
             <input id="email" name="email" type="email" class="form-control" placeholder="Adresse courriel" required>
           </div>
-          <div class="form-group">
+          <div class="col">
             <label for="phone" class="form-control">Téléphone</label>
             <input id="phone" name="phone" class="form-control" type="tel" placeholder="###-###-####" required>
           </div>
 
         </section>
-        <section>
+        <section class="row">
           <h2>Paiement</h2>
-          <div class="form-group">
+          <div class="col">
             <label for="credit-card" class="form-control">Numéro de carte de crédit</label>
             <input id="credit-card" name="credit-card" class="form-control" type="text" placeholder="•••• •••• •••• ••••" required>
           </div>
-         <div class="form-group">
+         <div class="col">
            <label for="credit-card-expiry" class="form-control">Expiration (mm/aa)</label>
            <input id="credit-card-expiry" name="credit-card-expiry" class="form-control" type="text" placeholder="mm/aa" required>
          </div>
