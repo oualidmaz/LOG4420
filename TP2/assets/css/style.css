@@ -10,8 +10,7 @@ html, body {
 }
 
 h1, h2, h3 {
-    margin-top:20px 0;
-    margin-bottom: 20px;
+    margin-top:20px;
 }
 
 h2{
@@ -19,7 +18,7 @@ h2{
 }
 
 h1{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 main {
@@ -85,10 +84,6 @@ li a {
     text-decoration: none;
 }
 
-nav ul li a:hover {
-
-}
-
 nav ul li .active {
     background-color: #1fb5e9;
     border-radius: 5px;
@@ -137,6 +132,9 @@ nav ul li .active {
     margin: 0 0 10px 10px;
 }
 
+.btn-group{
+    margin-top:10px;
+}
 
 .btn-group button {
     border: 1px solid #999999;
@@ -145,6 +143,7 @@ nav ul li .active {
     cursor: pointer; 
     width: 90%; 
     display: block; 
+    text-align: left;
 }
 .btn-group button:first-child{
     border-top-left-radius: 4px;
@@ -171,25 +170,6 @@ nav ul li .active {
     background-color: #ddf2fb;
 }
 
-
-.container-1{
-    border: 1px solid #cccccc;
-}
-
-.box-1{
-
-}
-
-
-.box-2{
-    
-}
-
-.box-3{
-    
-}
-
-
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -197,7 +177,6 @@ nav ul li .active {
   }
 
   .flex > a {
-    align-items: center;
     display: flex;
     flex: 1 1 0;
     flex-direction: column;
@@ -207,10 +186,12 @@ nav ul li .active {
     color: #000000;
     margin: 10px;
     border-radius: 4px;
+    padding: 10px;
   }
 
   .flex > a > img {
       width:200px;
+      margin: auto;
   }
 
   .flex > a > h2{
