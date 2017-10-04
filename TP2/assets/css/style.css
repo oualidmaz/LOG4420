@@ -5,15 +5,17 @@
 html, body {
     height: 100%;
     font-family: Arial, sans-serif;
+    font-size: medium;
+
 }
 
 h1 {
-    margin-top:20px;
+    margin:20px 0;
 }
 main {
     max-width: 1200px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding:0 20px;
+    margin:auto;
     min-height: calc(100vh - 151px);
 }
 
@@ -24,10 +26,13 @@ header{
     width: 100%;
     background-color:#14597f;
     border-bottom: 1px solid #0b2d3d;
+
+
 }
 
 header img{
     height: 40px;
+    width: auto;
     float: left;
 }
 footer{
@@ -70,7 +75,7 @@ li a {
 }
 
 nav ul li a:hover {
-    
+
 }
 
 nav ul li .active {
@@ -87,13 +92,14 @@ nav ul li .active {
 
 .count {
     border-radius: 50%;
-    padding-left: 5px;
-    padding-right: 5px;
     font-size: 12px;
     background-color: #d9534f;
-    margin-top:-15px;
+    bottom:9px;
     margin-left: 9px;
     position: absolute;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
 }
 
 .btn{
@@ -111,7 +117,7 @@ nav ul li .active {
     -webkit-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;
-    transition: background-color 0.2s ease-out;   
+    transition: background-color 0.2s ease-out;
 }
 
 #home-img{
@@ -120,3 +126,112 @@ nav ul li .active {
     margin: 0 0 10px 10px;
 }
 
+.contact{
+  margin-top: 20px;
+  border-radius: 4px;
+  border:1px solid #999;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+}
+.contact section {
+  text-align: center;
+}
+.contact section a {
+  color:#1fb5e9;
+  text-decoration: none;
+  font-size: small;
+}
+.contact section:nth-child(2) p{
+  font-style: italic;
+  font-size: small;
+}
+
+
+.contact section i {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.table{
+  width: 100%;
+  border:0;
+  margin: 20px 0;
+  border-collapse:separate;
+  border-spacing:0 5px;
+}
+.table button {
+  background-color: #ddd;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border:none;
+}
+.table button:hover {
+  background-color: #bbb;
+}
+
+.table th, .table td{
+  padding: 10px;
+}
+.table thead th{
+  text-align: left;
+
+}
+.table tr:first-child th,.table tr:last-child td{
+  border-bottom: 1px solid black;
+}
+.table thead th:nth-child(1){
+  width: 30px;
+  max-width: 30px;
+}
+.table th:last-child,.table tr td:last-child{
+  text-align: right;
+}
+.table + p{
+  text-align: right;
+  margin-bottom: 20px;
+}
+.pull-right{
+  float: right;
+}
+
+form.form-horizontal section {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+
+}
+
+#order-form section>h2{
+
+  flex-basis: 100%;
+  display: block;
+  margin-bottom: 14px;
+}
+.form-group {
+  margin-bottom: 8px;
+  flex-basis: calc(50% - 20px);
+  padding:0;
+
+}
+.form-control {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+}
+.form-control:not(label){
+  display: block;
+
+  border-radius: 4px;
+  border:1px solid #999;
+}
+label.form-control{
+  font-weight: bold;
+}
