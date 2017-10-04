@@ -19,7 +19,7 @@ h2{
 }
 
 h1{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 main {
@@ -145,6 +145,10 @@ nav ul li .active {
   z-index: -1;
 }
 
+.btn-group{
+    margin-top:10px;
+}
+
 main>article{
   position: relative;
 }
@@ -155,6 +159,7 @@ main>article{
     cursor: pointer;
     width: 90%;
     display: block;
+    text-align: left;
 }
 .btn-group button:first-child{
     border-top-left-radius: 4px;
@@ -181,24 +186,10 @@ main>article{
     background-color: #ddf2fb;
 }
 
-
-.container-1{
-    border: 1px solid #cccccc;
+.home-page > img {
+    height: 400px;
+    float: right;
 }
-
-.box-1{
-
-}
-
-
-.box-2{
-
-}
-
-.box-3{
-
-}
-
 
 .flex {
     display: flex;
@@ -207,7 +198,6 @@ main>article{
   }
 
   .flex > a {
-    align-items: center;
     display: flex;
     flex: 1 1 0;
     flex-direction: column;
@@ -217,10 +207,12 @@ main>article{
     color: #000000;
     margin: 10px;
     border-radius: 4px;
+    padding: 0 10px 10px 10px;
   }
 
   .flex > a > img {
       width:200px;
+      margin: auto;
   }
 
   .flex > a > h2{
@@ -321,6 +313,11 @@ main>article{
 .table + p{
   text-align: right;
   margin-bottom: 20px;
+}
+
+.table a{
+    color: #1fb5e9;
+    text-decoration: none;
 }
 .pull-right{
   float: right;
