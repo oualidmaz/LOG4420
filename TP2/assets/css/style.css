@@ -26,7 +26,7 @@ main {
     max-width: 1200px;
     padding:0 20px;
     margin:auto;
-    min-height: calc(100vh - 151px);
+    min-height: calc(100vh - 131px);
     box-sizing: border-box;
 }
 
