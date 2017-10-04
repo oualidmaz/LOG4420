@@ -293,6 +293,11 @@ nav ul li .active {
   text-align: right;
   margin-bottom: 20px;
 }
+
+.table a{
+    color: #1fb5e9;
+    text-decoration: none;
+}
 .pull-right{
   float: right;
 }
