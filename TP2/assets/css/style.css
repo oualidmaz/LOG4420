@@ -341,7 +341,7 @@ main>article {
   text-decoration: none;
 }
 
-.table button ~ span{
+.table td button ~ span{
   margin: 0 10px;
 }
 .pull-right {
