@@ -5,6 +5,8 @@
 html,
 body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, sans-serif;
   font-size: medium;
 }
@@ -26,15 +28,15 @@ h1 {
 
 main {
   max-width: 1200px;
+  width: 100%;
   padding: 0 20px;
   margin: auto;
-  min-height: calc(100vh - 161px);
   box-sizing: border-box;
+  flex: auto;
 }
 
 header {
   box-sizing: border-box;
-  padding: 10px 20px 20px 20px;
   height: 60px;
   width: 100%;
   background-color: #14597f;
@@ -47,16 +49,28 @@ header img {
   width: auto;
   float: left;
 }
-
+.header-content{
+  position: relative;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+  padding: 10px 20px 20px 20px;
+}
 footer {
   height: 70px;
+  min-height: 70px;
+  margin-top: 70px;
   background-color: #eeeeee;
   text-align: center;
   border-top: 1px solid #cccccc;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 footer p {
-  margin: 25px 0;
   text-align: center;
 }
 
@@ -424,3 +438,4 @@ label.form-control {
   -o-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
 }
+
