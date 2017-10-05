@@ -341,6 +341,9 @@ main>article {
   text-decoration: none;
 }
 
+.table button ~ span{
+  margin: 0 10px;
+}
 .pull-right {
   float: right;
 }
