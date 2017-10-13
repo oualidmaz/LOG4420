@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Commande</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+<body>
+  <header>
+    <div class="header-content">
+      <a href="./index.html">
+        <img alt="logo" src="./assets/img/logo.svg" title="Accueil">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./products.html">Produits</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li>
+            <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+            </span>
+              <span class="count">3</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article>
+      <h1>Commande</h1>
+      <form id="order-form"  action="./confirmation.html" method="post">
+        <section class="row">
+          <h2>Contact</h2>
+          <div class="col">
+            <label for="first-name"  class="form-control" >Prénom</label>
+            <input id="first-name" name="first-name" class="form-control" type="text" placeholder="Prénom" required>
+          </div>
+
+          <div class="col">
+            <label for="last-name" class="form-control">Nom</label>
+            <input id="last-name" name="last-name" class="form-control" type="text" placeholder="Nom" required>
+          </div>
+
+          <div class="col">
+            <label for="email" class="form-control">Adresse courriel</label>
+            <input id="email" name="email" type="email" class="form-control" placeholder="Adresse courriel" required>
+          </div>
+          <div class="col">
+            <label for="phone" class="form-control">Téléphone</label>
+            <input id="phone" name="phone" class="form-control" type="tel" placeholder="###-###-####" required>
+          </div>
+
+        </section>
+        <section class="row">
+          <h2>Paiement</h2>
+          <div class="col">
+            <label for="credit-card" class="form-control">Numéro de carte de crédit</label>
+            <input id="credit-card" name="credit-card" class="form-control" type="text" placeholder="•••• •••• •••• ••••" required>
+          </div>
+         <div class="col">
+           <label for="credit-card-expiry" class="form-control">Expiration (mm/aa)</label>
+           <input id="credit-card-expiry" name="credit-card-expiry" class="form-control" type="text" placeholder="mm/aa" required>
+         </div>
+
+        </section>
+
+        <button type="submit" class="btn pull-right">Payer <i class="fa fa-chevron-right"></i> </button>
+
+      </form>
+    </article>
+  </main>
+  <footer>
+      <p>Oualid Mazouzi 1548314 - Yves Israel Ngudie 1719325</p>
+  </footer>
+</body>
+</html>
