@@ -6,6 +6,11 @@
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+
+  <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/scripts/services/shopping-service.js"></script>
+  <script type="text/javascript" src="./assets/scripts/controllers/product-controller.js"></script>
 </head>
 <body>
   <header>
@@ -55,7 +60,7 @@
           <div class="clear-form"></div>
           <form id="prod-form" class="pull-right">
             <label for="product-quantity" >Quantité:</label>
-            <input type="number" value="1" min="1" id="product-quantity" class="form-control form-control-inline">
+            <input type="number" value="1" min="1" id="product-quantity" class="form-control form-control-inline" data-product-id>
             <button title="Ajouter au panier" type="submit" class="btn">
              <i class="fa fa-shopping-cart"></i> Ajouter
             </button>
