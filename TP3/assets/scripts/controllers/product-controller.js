@@ -3,7 +3,9 @@
   $(function () {
     $("#product-quantity").attr("data-product-id",parseInt(localStorage.getItem("selected-product")));
     $("#prod-form").submit((evt) => {
-      Tp3.service.shoppingCart.add($("#product-quantity").data("product-id"));
+      evt.preventDefault();
+      let input =$("#product-quantity");
+      Tp3.service.shoppingCart.add(input.data("product-id"), input.val());
       return false;
     });
   });

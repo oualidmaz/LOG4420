@@ -4,7 +4,6 @@
   function service(){
     // Recupere tous les id des items
     this.getItemIds= function(){
-
       return new Promise(resolve => {
         $.get("/data/products.json", function (data) {
           resolve(data) ;
@@ -12,38 +11,49 @@
       })
      };
     this.shoppingCart = {
+      itemPrices:[],
       itemIds:[],
-      add:function(id){
-        console.log(this);
-        this.itemIds.push(id);
+      add:function(id, count = 1) {
+       for(let i = 0; i< count; ++i)
+            this.itemIds.push(id);
         this.save();
       },
-      remove:function (id,all) {
+      remove: function(id,all) {
+
         if(all === true){
-
-            let j = this.itemIds.indexOf(id);
-            while(j > -1){
+          if(!confirm("Voulez-vous supprimer le produit du panier?")) return;
+            let j;
+            while( (j = this.itemIds.indexOf(id)) > -1){
               this.itemIds.splice(this.itemIds.indexOf(id),1);
-              j = this.itemIds.indexOf(id);
+
             }
-
-
         }
         else{
           this.itemIds.splice(this.itemIds.indexOf(id),1);
         }
-
-        console.log(this.itemIds);
         this.save();
       },
-      clear:function () {
+      clear:function() {
+        if(!confirm("Voulez-vous supprimer tous les produits du panier?")) return;
+
         this.itemIds = [];
+        this.save();
       },
       save:function(){
         localStorage.setItem("shopping-cart",JSON.stringify(this.itemIds)) ;
+      },
+      totalPrice: function() {
+        let total = 0;
+        this.itemIds.forEach(id => total+= this.itemPrices.filter(item => item.id === id)[0].price);
+        return total;
+
       }
     }
     this.shoppingCart.itemIds = JSON.parse(localStorage.getItem("shopping-cart"))||[];
+    this.getItemIds().then( items => {
+      this.shoppingCart.itemPrices = items.map(item => {return {id:item.id,name:item.name, price:item.price};});
+      console.log(this.shoppingCart.itemPrices);
+    } );
     return this;
   };
 
