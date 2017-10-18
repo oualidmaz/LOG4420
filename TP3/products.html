@@ -52,10 +52,10 @@
     <section>
       <h2>Classement</h2>
       <div class="btn-group" id="product-criteria">
-        <button class="selected">Prix (bas-haut)</button>
-        <button>Prix (haut-bas)</button>
-        <button>Nom (A-Z)</button>
-        <button>Nom (Z-A)</button>
+        <button class="selected" name="price-up">Prix (bas-haut)</button>
+        <button name="price-down">Prix (haut-bas)</button>
+        <button name="alpha-up">Nom (A-Z)</button>
+        <button name="alpha-down">Nom (Z-A)</button>
       </div>
     </section>
   </section>
@@ -63,7 +63,7 @@
   <article>
     <div class="products-header">
         <h1>Produits</h1>
-        <p>6 produits</p>
+        <p><span id="products-count">6</span> produits</p>
     </div>
     <div class="flex" id="products-list">
       <a href="./product.html" title="En savoir plus...">
