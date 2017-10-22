@@ -23,7 +23,7 @@
       $('#products-list').html('');
       $.each(products, function(index, item) {
         $('#products-list').append(`
-        <a href="./product.htmll?id=#${item.id}" title="En savoir plus...">
+        <a href="./product.html?id=${item.id}" title="En savoir plus...">
           <h2>${item.name}</h2>
           <img alt="${item.name}" src="./assets/img/${item.image}">
           <p><small>Prix</small> ${item.price}&thinsp;$</p>
