@@ -59,7 +59,7 @@
         function getTemplateRow(prod) {
           return ` <tr data-product-id="${prod.id}">
                 <td><button class="remove-item-button"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-                <td><a href="./product.html">${prod.product}</a></td>
+                <td><a href="./product.html?id=${prod.id}">${prod.product}</a></td>
                 <td>${prod.unitPrice}&thinsp;$</td>
                 <td>
                     <button class="circle-btn remove-quantity-button"  ${prod.count == 1? "disabled":""}><i class="fa fa-minus" aria-hidden="true"></i></button>
