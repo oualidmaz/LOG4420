@@ -59,6 +59,12 @@
 
     }
 
+    // add to cart 
+    $('.add-to-cart').click(function (){
+      
+      //show notification for 5 seconds
+      $('#dialog').fadeIn("slow").delay(5000).fadeOut();
+    });
 
 
 
