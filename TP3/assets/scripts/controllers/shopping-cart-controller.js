@@ -119,6 +119,7 @@
 
            Tp3.service.shoppingCart.clear();
            updateCart();
+           console.log(products);
 
        });
 
