@@ -439,3 +439,23 @@ label.form-control {
   transition: background-color 0.2s ease-out;
 }
 
+.notification{
+  background-color: #000000;
+  border-radius: 4px;
+  padding: 8px 8px;
+  border: 1px solid #0b2d3d;
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-block;
+}
+
+#dialog{
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  width: 300px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
