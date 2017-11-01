@@ -10,7 +10,7 @@ var connect = require("gulp-connect");
  */
 gulp.task('web-server', function() {
   connect.server({
-    port: 3000,
+    port: 8000,
     livereload:true,
     middleware: function() {
       return [
