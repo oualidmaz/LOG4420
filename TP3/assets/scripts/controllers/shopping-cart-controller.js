@@ -8,6 +8,7 @@
         var products =[];
 
         Tp3.service.getItemIds().then(items => {
+
           products = items;
           updateCart();
 
@@ -16,21 +17,24 @@
         function updateCart() {
           vm.items ={};
 
-          console.log(Tp3.service.shoppingCart.itemIds);
-          console.log(Tp3.service.shoppingCart.itemPrices);
+          // console.log(Tp3.service.shoppingCart.itemIds);
+          // console.log(Tp3.service.shoppingCart.itemPrices);
 
           Tp3.service.shoppingCart.itemIds.sort((a, b) => {
-            let item1 = Tp3.service.shoppingCart.itemPrices.filter(item => item.id === a)[0];
-            let item2 = Tp3.service.shoppingCart.itemPrices.find(item => item.id === b);
+            let item1 = Tp3.service.shoppingCart.itemPrices.filter(item => item.id == a)[0];
+            let item2 = Tp3.service.shoppingCart.itemPrices.find(item => item.id == b);
 
             console.log(`item1 = ${item1}, item2 =${item2}`);
 
             return item1.name.localeCompare(item2.name);
           });
-          console.log(Tp3.service.shoppingCart.itemIds);
+
 
           Tp3.service.shoppingCart.itemIds.forEach(function (id) {
-            var product = products.filter(t => t.id === id)[0];
+
+            var product = products.filter(t => t.id == id)[0];
+
+
             let key = `${product.name.toLocaleUpperCase()}`;
             if(!vm.items.hasOwnProperty(key)){
 
@@ -52,7 +56,7 @@
               vm.items[key].count++;
             }
           });
-          console.log(vm.items);
+
           updateTable(vm.items);
         }
 
@@ -78,7 +82,6 @@
           $(table).empty();
 
           for(let prop in items){
-            console.log(prop);
             $(table).append(getTemplateRow(items[prop]));
 
           }
@@ -86,6 +89,7 @@
           $(".add-quantity-button,.remove-quantity-button").click(function () {
 
             let id = $(this).parents("tr").data("product-id");
+
 
             if($(this).hasClass("add-quantity-button"))
               Tp3.service.shoppingCart.add(id);
@@ -119,7 +123,7 @@
 
            Tp3.service.shoppingCart.clear();
            updateCart();
-           console.log(products);
+
 
        });
 

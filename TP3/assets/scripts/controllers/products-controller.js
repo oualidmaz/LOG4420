@@ -23,13 +23,20 @@
       $('#products-list').html('');
       $.each(products, function(index, item) {
         $('#products-list').append(`
-        <a href="./product.html?id=${item.id}" title="En savoir plus...">
+        <a href="./product.html?id=${item.id}" title="En savoir plus..." data-product-id="${item.id}">
           <h2>${item.name}</h2>
           <img alt="${item.name}" src="./assets/img/${item.image}">
           <p><small>Prix</small> ${item.price}&thinsp;$</p>
         </a>
         `);
      });
+
+
+      // $("#products-list a").click((evt) => {
+      //   localStorage
+      //     .setItem("selected-product",$(evt.target).parent("a").data("product-id"));
+      //
+      // });
     }
 
     function sortByPriceASC(a,b){
@@ -54,7 +61,7 @@
           return true;
         }else{
           return (i.category == category);
-        }   
+        }
       });
 
      console.log(sorting);
@@ -85,11 +92,11 @@
           return true;
         }else{
           return (i.category == selectedCategory);
-        }   
+        }
       });
 
       updateNbrProducts(filtredProducts);
-     
+
       listProduct(filtredProducts);
     });
 
@@ -102,13 +109,5 @@
     });
 
 
-    $("#products-list a>img").click((evt) => {
-
-      //C'est juste pour que je teste le shopping-cart. Ca devrait etre fait differemment
-      let a =$(evt.target);
-      let h2 =$(a).prev("h2");
-      localStorage.setItem("selected-product",items.filter(item => item.name === $(h2[0]).text())[0].id );
-
-    });
   });
 })();

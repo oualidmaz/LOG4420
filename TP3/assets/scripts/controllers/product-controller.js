@@ -1,13 +1,8 @@
 (function () {
 
   $(function () {
-    $("#product-quantity").attr("data-product-id", parseInt(localStorage.getItem("selected-product")));
-    $("#prod-form").submit((evt) => {
-      evt.preventDefault();
-      let input = $("#product-quantity");
-      Tp3.service.shoppingCart.add(input.data("product-id"), input.val());
-      return false;
-    });
+    //$("#product-quantity").attr("data-product-id", parseInt(localStorage.getItem("selected-product")));
+
     // hide shopping cart if there is no item on it
     // var nbrItemOnShoppingCart = JSON.parse(localStorage.getItem("shopping-cart")).length;
     // $('.shopping-cart .count').html(nbrItemOnShoppingCart);
@@ -27,6 +22,15 @@
     }
 
     var productId = $.urlParam('id');
+
+    $("#prod-form").submit((evt) => {
+      evt.preventDefault();
+      let input = $("#product-quantity");
+
+      Tp3.service.shoppingCart.add(productId, input.val());
+      return false;
+    });
+
     listProduct(productId);
 
     function listProduct(productId) {
@@ -51,17 +55,17 @@
           $.each(product.features, function (index, feature) {
             $('.col:eq(2) section:eq(1) ul').append(`<li>${feature}</li>`);
           });
-        }else{ // product not found 
+        }else{ // product not found
           $('article').empty().append('<h1>Page non trouvée !</h1>');
         }
-       
+
       });
 
     }
 
-    // add to cart 
+    // add to cart
     $('.add-to-cart').click(function (){
-      
+
       //show notification for 5 seconds
       $('#dialog').fadeIn("slow").delay(5000).fadeOut();
     });
