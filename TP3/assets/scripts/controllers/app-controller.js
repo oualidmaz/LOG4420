@@ -28,12 +28,11 @@
           else{
             order.invalid = true;
           }
-
-
         };
 
         app.commit = ()=>{
-          //localStorage.setItem("order",null);
+          localStorage.removeItem("order");
+          localStorage.removeItem("shopping-cart");
           app.shoppingCart.clear();
         }
 

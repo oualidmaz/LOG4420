@@ -26,7 +26,7 @@
         <a href="./product.html?id=${item.id}" title="En savoir plus..." data-product-id="${item.id}">
           <h2>${item.name}</h2>
           <img alt="${item.name}" src="./assets/img/${item.image}">
-          <p><small>Prix</small> ${item.price}&thinsp;$</p>
+          <p><small>Prix</small> ${item.price.toFixed(2).replace(".",",")}$</p>
         </a>
         `);
      });
@@ -48,10 +48,10 @@
     }
 
     function sortByNameASC(a,b){
-      return a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
+      return a.name.localeCompare(b.name);// a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
     }
     function sortByNameDESC(a,b){
-      return a.name == b.name ? 0 : b.name < a.name ? -1 : 1;
+      return -a.name.localeCompare(b.name);// a.name == b.name ? 0 : b.name < a.name ? -1 : 1;
     }
 
     function orderProducts(category, sorting){
@@ -81,7 +81,7 @@
     }
 
     function updateNbrProducts(products){
-      $("#products-count").html(products.length);
+      $("#products-count").html(`${products.length} produit${products.length?"s":""}`);
     }
 
     $("#product-categories > button").click((evt) => {
