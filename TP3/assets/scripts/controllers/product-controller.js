@@ -1,5 +1,5 @@
 (function () {
-
+  "use strict"
   $(function () {
     //$("#product-quantity").attr("data-product-id", parseInt(localStorage.getItem("selected-product")));
 

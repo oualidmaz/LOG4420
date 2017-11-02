@@ -1,10 +1,10 @@
 (function (app) {
-
+  "use strict"
       $(function () {
 
        // hide shopping cart if there is no item on it
         app.shoppingCart = Tp3.service.shoppingCart;
-        console.log(app.shoppingCart);
+
         app.order = JSON.parse(localStorage.getItem("order"));
 
 

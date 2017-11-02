@@ -50,7 +50,6 @@
       },
       totalPrice: function() {
         let total = 0;
-        console.log(this.itemIds);
         this.itemIds.forEach(id => total+= this.itemPrices.filter(item => item.id == id)[0].price);
         return total;
 
