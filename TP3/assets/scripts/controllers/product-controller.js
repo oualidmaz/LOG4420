@@ -1,13 +1,8 @@
 (function () {
-
+  "use strict"
   $(function () {
-    $("#product-quantity").attr("data-product-id", parseInt(localStorage.getItem("selected-product")));
-    $("#prod-form").submit((evt) => {
-      evt.preventDefault();
-      let input = $("#product-quantity");
-      Tp3.service.shoppingCart.add(input.data("product-id"), input.val());
-      return false;
-    });
+    //$("#product-quantity").attr("data-product-id", parseInt(localStorage.getItem("selected-product")));
+
     // hide shopping cart if there is no item on it
     // var nbrItemOnShoppingCart = JSON.parse(localStorage.getItem("shopping-cart")).length;
     // $('.shopping-cart .count').html(nbrItemOnShoppingCart);
@@ -27,6 +22,18 @@
     }
 
     var productId = $.urlParam('id');
+
+    $("#add-to-cart-form").submit((evt) => {
+      evt.preventDefault();
+      let input = $("#product-quantity");
+
+      Tp3.service.shoppingCart.add(productId, input.val());
+
+      //show notification for 5 seconds
+      $('#dialog').fadeIn("slow").delay(5000).fadeOut();
+      return false;
+    });
+
     listProduct(productId);
 
     function listProduct(productId) {
@@ -40,32 +47,26 @@
         if(product){
           $('article > h1').html(product.name);
           $('.col:first').html(`
-          <img alt="${product.name}" src="./assets/img/${product.image}" class="col img-responsive">
+          <img id="product-image" alt="${product.name}" src="./assets/img/${product.image}" class="col img-responsive">
          `);
           $('.col:eq(2) section:eq(0)').empty();
           $('.col:eq(2) > section:eq(0)').html(`
               <h2>Description</h2>
-              <p>${product.description}</p>
+              <p id="product-desc">${product.description}</p>
           `);
           $('.col:eq(2) section:eq(1) ul').empty();
           $.each(product.features, function (index, feature) {
             $('.col:eq(2) section:eq(1) ul').append(`<li>${feature}</li>`);
           });
-        }else{ // product not found 
-          $('article').empty().append('<h1>Page non trouvée !</h1>');
+
+          $("#product-price").text(`${product.price.toFixed(2).replace(".",",")}$`);
+        }else{ // product not found
+          $('article').empty().append('<h1>Page non trouvée!</h1>');
         }
-       
+
       });
 
     }
-
-    // add to cart 
-    $('.add-to-cart').click(function (){
-      
-      //show notification for 5 seconds
-      $('#dialog').fadeIn("slow").delay(5000).fadeOut();
-    });
-
 
 
   });

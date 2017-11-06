@@ -6,9 +6,17 @@
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
   <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+
+  <script type="text/javascript" src="./assets/js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./assets/js/additional-methods.min.js"></script>
+  <script type="text/javascript" src="./assets/js/messages_fr.js"></script>
+
+  <script src="assets/scripts/services/shopping-service.js"></script>
   <script type="text/javascript" src="./assets/scripts/controllers/app-controller.js"></script>
-  <script type="text/javascript" src="./assets/scripts/controllers/product-controller.js"></script>
+  <script src="assets/scripts/controllers/order-controller.js"></script>
+
 <body>
   <header>
     <div class="header-content">
@@ -41,21 +49,21 @@
           <h2>Contact</h2>
           <div class="col">
             <label for="first-name"  class="form-control" >Prénom</label>
-            <input id="first-name" name="first-name" class="form-control" type="text" placeholder="Prénom" required>
+            <input id="first-name" name="first-name" class="form-control" type="text" placeholder="Prénom" >
           </div>
 
           <div class="col">
             <label for="last-name" class="form-control">Nom</label>
-            <input id="last-name" name="last-name" class="form-control" type="text" placeholder="Nom" required>
+            <input id="last-name" name="last-name" class="form-control" type="text" placeholder="Nom" >
           </div>
 
           <div class="col">
             <label for="email" class="form-control">Adresse courriel</label>
-            <input id="email" name="email" type="email" class="form-control" placeholder="Adresse courriel" required>
+            <input id="email" name="email" type="email" class="form-control" placeholder="Adresse courriel" >
           </div>
           <div class="col">
             <label for="phone" class="form-control">Téléphone</label>
-            <input id="phone" name="phone" class="form-control" type="tel" placeholder="###-###-####" required>
+            <input id="phone" name="phone" class="form-control" type="tel" placeholder="###-###-####" >
           </div>
 
         </section>
@@ -63,11 +71,11 @@
           <h2>Paiement</h2>
           <div class="col">
             <label for="credit-card" class="form-control">Numéro de carte de crédit</label>
-            <input id="credit-card" name="credit-card" class="form-control" type="text" placeholder="•••• •••• •••• ••••" required>
+            <input id="credit-card" name="credit-card" class="form-control" type="text" placeholder="•••• •••• •••• ••••" >
           </div>
          <div class="col">
            <label for="credit-card-expiry" class="form-control">Expiration (mm/aa)</label>
-           <input id="credit-card-expiry" name="credit-card-expiry" class="form-control" type="text" placeholder="mm/aa" required>
+           <input id="credit-card-expiry" name="credit-card-expiry" class="form-control" type="text" placeholder="mm/aa" >
          </div>
 
         </section>

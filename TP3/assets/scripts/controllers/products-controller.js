@@ -23,13 +23,20 @@
       $('#products-list').html('');
       $.each(products, function(index, item) {
         $('#products-list').append(`
-        <a href="./product.html?id=${item.id}" title="En savoir plus...">
+        <a href="./product.html?id=${item.id}" title="En savoir plus..." data-product-id="${item.id}">
           <h2>${item.name}</h2>
           <img alt="${item.name}" src="./assets/img/${item.image}">
-          <p><small>Prix</small> ${item.price}&thinsp;$</p>
+          <p><small>Prix</small> ${item.price.toFixed(2).replace(".",",")}$</p>
         </a>
         `);
      });
+
+
+      // $("#products-list a").click((evt) => {
+      //   localStorage
+      //     .setItem("selected-product",$(evt.target).parent("a").data("product-id"));
+      //
+      // });
     }
 
     function sortByPriceASC(a,b){
@@ -41,10 +48,10 @@
     }
 
     function sortByNameASC(a,b){
-      return a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
+      return a.name.localeCompare(b.name);// a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
     }
     function sortByNameDESC(a,b){
-      return a.name == b.name ? 0 : b.name < a.name ? -1 : 1;
+      return -a.name.localeCompare(b.name);// a.name == b.name ? 0 : b.name < a.name ? -1 : 1;
     }
 
     function orderProducts(category, sorting){
@@ -54,7 +61,7 @@
           return true;
         }else{
           return (i.category == category);
-        }   
+        }
       });
 
      console.log(sorting);
@@ -74,7 +81,7 @@
     }
 
     function updateNbrProducts(products){
-      $("#products-count").html(products.length);
+      $("#products-count").html(`${products.length} produit${products.length?"s":""}`);
     }
 
     $("#product-categories > button").click((evt) => {
@@ -85,11 +92,11 @@
           return true;
         }else{
           return (i.category == selectedCategory);
-        }   
+        }
       });
 
       updateNbrProducts(filtredProducts);
-     
+
       listProduct(filtredProducts);
     });
 
@@ -102,11 +109,5 @@
     });
 
 
-    $("#products-list a>img").click((evt) => {
-      let a =$(evt.target);
-      let h2 =$(a).prev("h2");
-      localStorage.setItem("selected-product",items.filter(item => item.name === $(h2[0]).text())[0].id );
-
-    });
   });
 })();
