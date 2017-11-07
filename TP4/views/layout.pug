@@ -2,6 +2,30 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/assets/css/style.css')
   body
-    block content
+  header
+    .header-container
+      .logo
+        a(href='/')
+          img(alt='logo', src='./assets/img/logo.svg', title='Accueil')
+      nav
+        ul
+          li(class=title=='Accueil'?'active':'')
+            a(href='/') Accueil
+          li(class=title=='Produits'?'active':'')
+            a(href='./produits') Produits
+          li(class=title=='Contact'?'active':'')
+            a(href='./contact') Contact
+          li
+            a.shopping-cart(href='./shopping-cart', title='Panier')
+              span.fa-stack.fa-lg
+                i.fa.fa-circle.fa-stack-2x.fa-inverse
+                i.fa.fa-shopping-cart.fa-stack-1x
+              span.count 3
+    main
+      block content
+    footer
+      p Oualid Mazouzi 1548314 - Yves Israel Ngudie 1719325
+
