@@ -7,7 +7,11 @@ var bodyParser = require("body-parser");
 var session = require("express-session");
 
 require("./lib/db");
-var index = require("./routes/index");
+//define routes 
+var indexRoute = require("./routes/index");
+var productsRoute = require("./routes/products");
+var shoppingCartRoute = require("./routes/shopping-cart");
+var ordersRoute = require("./routes/orders"); 
 
 var app = express();
 
@@ -34,7 +38,10 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-app.use("/", index);
+app.use("/", indexRoute);
+app.use("/api/products", productsRoute);
+app.use("/api/shopping-cart", shoppingCartRoute);
+app.use("/api/orders", ordersRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
