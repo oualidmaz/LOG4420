@@ -11,6 +11,6 @@ var Product = new Schema({
     category: String,
     description: String,
     features: Array
-  }, { versionKey: false });
+  }, { versionKey: false});
   
   module.exports = mongoose.model('Product', Product);
