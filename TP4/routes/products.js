@@ -48,8 +48,8 @@ router.get("/:id", function (req, res) {
   console.log(req.params.id)
   Product.findOne({id: req.params.id}, function (err, product) {
     if (err || !product) {
-      return res.status(400).json({
-        title: 'Invalide product ID !',
+      return res.status(404).json({
+        title: 'product ID not found!',
       });
     }
     res.status(200).json(product);
