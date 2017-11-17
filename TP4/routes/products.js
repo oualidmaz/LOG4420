@@ -4,42 +4,58 @@ var Product = require('../models/productModel');
 
 
 // get prudcts - /api/products
-router.get("/:category?", function(req, res) {
-    if(req.query.criteria){
-        switch (req.query.criteria) {
-          case "alpha-asc":
-            break;
-          case "alpha-dsc":
-            break;
-          case "price-asc":
-            break;
-          case "price-dsc":
-            break;
-          default:
-            break;
-        }
+router.get("/", function (req, res) {
+  if (req.query.criteria) {
+    var criteria = sorting.find(s => s.name == req.query.criteria);
+    if (criteria) {
+      criteria = criteria.fn;
+    } else {
+      return res.status(400).json({ title: 'Invalide criteria !' });
     }
-
-    else if(req.params.category){
-      var category = req.params.category;
-      console.log(category);
-      Product.find({'category':category}, function(err, product){
-        if (err) throw err;
-        res.json(product);
-      });
-    }else{
-
-      Product.find({}, function(err, product) {
-        if (err) throw err;
-  
-  
-        res.json(product);
-      });
-
+  }
+  if (req.query.category) {
+    var category = categorys.includes(req.query.category) ? req.query.category : null;
+    if (!category) {
+      return res.status(400).json({ title: 'Invalide category !' });
     }
+    Product.find({ 'category': category }, function (err, products) {
+      if (err) {
+        return res.status(400).json({
+          title: 'An error has occured !',
+          error: err
+        });
+      }
+      products = products.sort(criteria);
+      res.status(200).json(products);
+    });
+  } else {
+    Product.find({}, function (err, products) {
+      if (err) {
+        return res.status(400).json({
+          title: 'An error has occured !',
+          error: err
+        });
+      }
+      products = products.sort(sortByPriceASC);
+      res.status(200).json(products);
+    });
+  }
+  
+});
 
 
+router.get("/:id", function (req, res) {
+  console.log(req.params.id)
+  Product.findOne({id: req.params.id}, function (err, product) {
+    if (err || !product) {
+      return res.status(400).json({
+        title: 'Invalide product ID !',
+      });
+    }
+    res.status(200).json(product);
   });
+});
+
 
   // save product - /api/products
   router.post("/", function(req, res) {
@@ -101,6 +117,26 @@ router.get("/:category?", function(req, res) {
     });
   });
 
+
+function sortByPriceASC(a, b) {
+  return a.price - b.price;
+}
+
+function sortByPriceDESC(a, b) {
+  return b.price - a.price;
+}
+
+function sortByNameASC(a, b) {
+  return a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
+}
+function sortByNameDESC(a, b) {
+  return a.name == b.name ? 0 : b.name < a.name ? -1 : 1;
+}
+
+var sorting = [{name:'alpha-asc',fn:sortByNameASC}, {name:'alpha-dsc',fn:sortByNameDESC},
+               {name:'price-asc',fn:sortByPriceASC}, {name:'price-dsc',fn:sortByPriceDESC}];
+
+var categorys = ['cameras','computers','consoles','screens'];
 
 
 
