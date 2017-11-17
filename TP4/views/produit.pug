@@ -2,4 +2,26 @@ extends layout
 
 block content
   article
-    h1= message
+    h1#product-name Produit
+    .row
+      .col
+        img#product-image(alt="product", src="#")
+      .col
+        section
+          h2 Description
+          p#product-desc
+        section
+          h2 Caractéristiques
+          ul#product-features
+        hr
+        form#add-to-cart-form.pull-right
+          label(for="product-quantity") Quantité:
+          input#product-quantity.form-control(type="number", value="1", min="1")
+          button.btn(title="Ajouter au panier", type="submit")
+            i.fa.fa-cart-plus
+            |   Ajouter
+        p
+          | Prix: 
+          strong#product-price
+    #dialog.dialog
+      | Le produit a été ajouté au panier.

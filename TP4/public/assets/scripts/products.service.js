@@ -21,7 +21,9 @@ onlineShop.productsService = (function($) {
    */
   self.getProducts = function(sortingCriteria, category) {
     if (!productsPromise) {
-      productsPromise = $.get("./data/products.json");
+      productsPromise =  $.ajax({
+        url: "http://localhost:8000/api/products/"
+    })
     }
     return productsPromise.then(function(products) {
       if (category) {
