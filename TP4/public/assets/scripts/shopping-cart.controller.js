@@ -140,6 +140,11 @@ var onlineShop = onlineShop || {};
   });
 
   // Checks if we are on the "shopping cart" page.
+  function _updateShoppingCartPage(){
+    if ($("#shopping-cart-container").length){
+
+    }
+  }
   if ($("#shopping-cart-container").length) {
     shoppingCartService.getItems().done(function(items) {
       if (items.length === 0) {
@@ -151,5 +156,6 @@ var onlineShop = onlineShop || {};
     _updateTotalAmount();
   }
   _updateCount();
+  shoppingCartService.onUpdate(_updateCount);
 
 })(jQuery, onlineShop.shoppingCartService, onlineShop.utils);

@@ -35,6 +35,7 @@ router.post("/", function(req, res) {
   order.phone = body.phone;
   body.products.forEach(function(product) {
       order.products.push(product);
+
   });
 
   order.save((err, order)=>{
@@ -52,8 +53,8 @@ router.post("/", function(req, res) {
   });
 
   // delete specific order - /api/orders/:id
-  router.delete('/:id', function (req, res) { 
-    Order.remove({id: req.params.id}, 
+  router.delete('/:id', function (req, res) {
+    Order.remove({id: req.params.id},
       function (err, order) {
         if (err){
           return res.status(404).json({
@@ -68,8 +69,8 @@ router.post("/", function(req, res) {
 });
 
   // Delete all orders /api/orders
-  router.delete('/', function (req, res) { 
-    Order.remove({}, 
+  router.delete('/', function (req, res) {
+    Order.remove({},
       function (err, order) {
         if (err){
           return res.status(404).json({

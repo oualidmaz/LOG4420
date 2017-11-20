@@ -57,6 +57,11 @@ onlineShop.ordersService = (function() {
   }
 
   // Initializes the orders list.
+  // $.get("/api/shopping-cart").then(shoppingCart=>{
+  //   orders = shoppingCart;
+  // },err =>{
+  //   console.loh
+  // })
   if (localStorage["orders"]) {
     orders = JSON.parse(localStorage["orders"]);
   }

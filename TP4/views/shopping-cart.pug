@@ -2,4 +2,23 @@ extends layout
 
 block content
   article
-    h1= message
+    h1 Panier
+    #shopping-cart-container
+      table.table.shopping-cart-table
+        thead
+          tr
+            th
+            th Produit
+            th Prix unitaire
+            th Quantité
+            th Prix
+        tbody
+      p.shopping-cart-total
+        | Total:
+        strong#total-amount
+      a.btn.pull-right(href='./order')
+        | Commander
+        i.fa.fa-angle-double-right
+      button#remove-all-items-button.btn
+        i.fa.fa-trash-o
+        |   Vider le panier

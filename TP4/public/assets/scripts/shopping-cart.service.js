@@ -26,11 +26,28 @@ onlineShop.shoppingCartService = (function($, productsService) {
       quantity = 1;
     }
     if (items[productId]) {
-      items[productId] += quantity;
+      //items[productId] += quantity;
+      self.updateItemQuantity(productId,items[productId] + quantity);
+      // $.ajax({
+      //   url: `/api/shopping-cart/${productId}`,
+      //   type: 'PUT',
+      //   success: function (res) {
+      //     console.log(res);
+      //     _updateLocalStorage();
+      //   },
+      //   data: JSON.stringify({productId,quantity:items[productId]}),
+      //   contentType: "application/json"
+      // });
+
     } else {
       items[productId] = quantity;
+      $.post("/api/shopping-cart/",{productId,quantity}).then(res =>{
+        console.log(res);
+        _updateLocalStorage();
+      },err=>{
+        console.log(err);
+      });
     }
-    _updateLocalStorage();
   };
 
   /**
@@ -106,7 +123,17 @@ onlineShop.shoppingCartService = (function($, productsService) {
     }
     if (items[productId]) {
       items[productId] = quantity;
-      _updateLocalStorage();
+      $.ajax({
+        url: `/api/shopping-cart/${productId}`,
+        type: 'PUT',
+        success: function (res) {
+          console.log(res);
+          _updateLocalStorage();
+        },
+        data: JSON.stringify({productId,quantity:items[productId]}),
+        contentType: "application/json"
+      });
+     // _updateLocalStorage();
     }
   };
 
@@ -117,9 +144,19 @@ onlineShop.shoppingCartService = (function($, productsService) {
    */
   self.removeItem = function(productId) {
     if (items[productId]) {
+      $.ajax({
+        url: `/api/shopping-cart/${productId}`,
+        type: 'DELETE',
+        success: function (res) {
+          console.log(`delete =${res}`);
+          _updateLocalStorage();
+        },
+        data: JSON.stringify({productId,quantity:items[productId]}),
+        contentType: "application/json"
+      });
       items[productId] = undefined;
     }
-    _updateLocalStorage();
+   // _updateLocalStorage();
   };
 
   /**
@@ -127,7 +164,16 @@ onlineShop.shoppingCartService = (function($, productsService) {
    */
   self.removeAllItems = function() {
     items = {};
-    _updateLocalStorage();
+    $.ajax({
+      url: `/api/shopping-cart/`,
+      type: 'DELETE',
+      success: function (res) {
+        console.log(`delete =${res}`);
+        _updateLocalStorage();
+      },
+      contentType: "application/json"
+    });
+    //_updateLocalStorage();
   };
 
   /**
@@ -136,13 +182,28 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @private
    */
   function _updateLocalStorage() {
-    localStorage["shoppingCart"] = JSON.stringify(items);
+    //localStorage["shoppingCart"] = JSON.stringify(items);
+    $.get("/api/shopping-cart").done(shoppingCart=>{
+      console.log(shoppingCart);
+      items={};
+      $.each(shoppingCart,(i,product)=>{
+        items[product.productId] = parseInt(product.quantity);
+      });
+      console.log(items);
+
+      if(self._onUpdate) self._onUpdate();
+    });
   }
 
+  self.onUpdate= function(callback){
+    this._onUpdate = callback;
+  };
   // Initializes the shopping cart.
-  if (localStorage["shoppingCart"]) {
-    items = JSON.parse(localStorage["shoppingCart"]);
-  }
+  // if (localStorage["shoppingCart"]) {
+  //   items = JSON.parse(localStorage["shoppingCart"]);
+  // }
+  _updateLocalStorage();
+
 
   return self;
 })(jQuery, onlineShop.productsService);

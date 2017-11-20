@@ -11,12 +11,19 @@ router.get("/produits", function(req, res) {
 router.get("/contact", function(req, res) {
   res.render("contact", { title: "Contact", message: "page contact" });
 });
+
 router.get("/panier", function(req, res) {
   res.render("panier", { title: "Panier", message: "page panier" });
 });
-router.get("/commande", function(req, res) {
+
+router.get("/order", function(req, res) {
   res.render("commande", { title: "Commande", message: "page commande" });
 });
+
+router.post("/confirmation", function(req, res) {
+  res.render("confirmation", { title: "Confirmation", message: "page confirmation" });
+});
+
 router.get("/produit", function(req, res) {
   res.render("produit", { title: "Produit", message: "page produit" });
 });

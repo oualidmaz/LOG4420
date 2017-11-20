@@ -44,4 +44,6 @@ onlineShop.utils = {
     number = number + '';
     return number.length >= width ? number : new Array(width - number.length + 1).join(symbol) + number;
   }
+
+
 };
