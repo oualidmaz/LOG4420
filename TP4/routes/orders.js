@@ -32,7 +32,6 @@ router.get("/:id", function (req, res) {
 
 router.post("/", function (req, res) {
   var body = req.body;
-  console.log(body);
   var order = new Order();
   order.id = body.id;
   order.firstName = body.firstName;
@@ -100,7 +99,6 @@ router.post("/", function (req, res) {
 
     order.save((err, order) => {
       if (err) {
-        console.log(err);
         return res.status(400).json({
           title: 'An error has occured !',
           error: err
