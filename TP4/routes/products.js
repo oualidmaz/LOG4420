@@ -39,7 +39,6 @@ router.get("/", function (req, res) {
           error: err
         });
       }
-      console.log('without criteria');
       products = products.sort(criteria);
       res.status(200).json(products);
     });
@@ -48,7 +47,6 @@ router.get("/", function (req, res) {
 });
 
 router.get("/:id", function (req, res) {
-  console.log(req.params.id)
   Product.findOne({id: req.params.id}, function (err, product) {
     if (err || !product) {
       return res.status(404).json({
