@@ -13,13 +13,15 @@ router.get("/contact", function(req, res) {
 });
 
 router.get("/panier", function(req, res) {
-  res.render("panier", { title: "Panier", message: "page panier" });
+  res.render("shopping-cart", { title: "Panier", message: "page panier" });
 });
 
 router.get("/order", function(req, res) {
   res.render("commande", { title: "Commande", message: "page commande" });
 });
-
+router.get("/commande", function(req, res) {
+  res.render("commande", { title: "Commande", message: "page commande" });
+});
 router.post("/confirmation", function(req, res) {
   res.render("confirmation", { title: "Confirmation", message: "page confirmation" });
 });

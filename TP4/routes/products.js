@@ -40,7 +40,7 @@ router.get("/", function (req, res) {
       res.status(200).json(products);
     });
   }
-  
+
 });
 
 
@@ -71,6 +71,15 @@ router.get("/:id", function (req, res) {
        product.features.push(feature);
     });
 
+    ["id","name","price","image","category","description"].forEach(prop=>{
+      //if(order.hasOwnProperty(prop)){
+      if(!product[prop]) return res.status(400).json({
+        title:`La valeur de ${prop} est invalide!`
+      })
+      //}
+
+    });
+
     product.save((err, product)=>{
       if (err){
         return res.status(400).json({
@@ -86,24 +95,33 @@ router.get("/:id", function (req, res) {
   });
 
   // delete specific product - /api/products/:id
-  router.delete('/:id', function (req, res) { 
-    Product.remove({id: req.params.id}, 
-      function (err, product) {
-        if (err){
-          return res.status(404).json({
-            title: 'An error has occured !',
-            error : err
-          });
-        }
-        res.status(204).json({
-          title : 'Product Deleted.'
+  router.delete('/:id', function (req, res) {
+    Product.findOne({id:req.params.id},function(err,product){
+      if (err|| !product){
+        return res.status(404).json({
+          title: 'An error has occured !',
+          error : err
         });
-    });
+      }
+      Product.remove(product,
+        function (err, product) {
+          if (err){
+            return res.status(404).json({
+              title: 'An error has occured !',
+              error : err
+            });
+          }
+          res.status(204).json({
+            title : 'Product Deleted.'
+          });
+        });
+    })
+
 });
 
   // Delete all products /api/products
-  router.delete('/', function (req, res) { 
-    Product.remove({}, 
+  router.delete('/', function (req, res) {
+    Product.remove({},
       function (err, product) {
         if (err){
           return res.status(404).json({

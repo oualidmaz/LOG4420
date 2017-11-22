@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Order = require('../models/orderModel');
+var Product = require('../models/productModel');
 
 router.get("/", function (req, res) {
   Order.find({}, function (err, orders) {
@@ -27,6 +28,7 @@ router.get("/:id", function (req, res) {
 
 router.post("/", function(req, res) {
   var body = req.body;
+  console.log(body);
   var order = new Order();
   order.id = body.id;
   order.firstName = body.firstName;
@@ -38,17 +40,41 @@ router.post("/", function(req, res) {
 
   });
 
-  order.save((err, order)=>{
-    if (err){
-      return res.status(400).json({
-        title: 'An error has occured !',
-        error : err
+  ["id","firstName","lastName","email","phone","products"].forEach(prop=>{
+    //if(order.hasOwnProperty(prop)){
+    console.log(prop);
+      if(!order[prop]) return res.status(400).json({
+        title:`La valeur de ${prop} est invalide!`
+      })
+    //}
+
+  });
+
+  let ids = order.products.map(p=> p.id);
+  Product.find({id:{$in:ids}},(err,result)=>{
+    if(result)
+    if(result.length < ids.length)
+      return res.status(400).json();
+
+    order.save((err, order)=>{
+      if (err){
+        console.log(err);
+        return res.status(400).json({
+          title: 'An error has occured !',
+          error : err
+        });
+      }
+
+      res.status(201).json({
+        title : 'Order Saved.',
+        order:{
+          id:body.id,
+          name:body.name
+        }
       });
-    }
-    res.status(201).json({
-      title : 'Order Saved.'
     });
   });
+
 
   });
 
@@ -64,6 +90,7 @@ router.post("/", function(req, res) {
         }
         res.status(204).json({
           title : 'Order Deleted.'
+
         });
     });
 });

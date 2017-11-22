@@ -18,10 +18,22 @@ onlineShop.ordersService = (function() {
    * @param order   The order to create.
    */
   self.createOrder = function(order) {
+
+
     if (order) {
       order.id = orders.length + 1;
       orders.push(order);
-      _updateLocalStorage();
+
+      $.ajax({
+        url: `/api/orders/`,
+        type: 'POST',
+        success: function (res) {
+          console.log(res);
+          _updateLocalStorage();
+        },
+        data: JSON.stringify(order),
+        contentType: "application/json"
+      });
     }
   };
 
@@ -37,7 +49,23 @@ onlineShop.ordersService = (function() {
     }
     return orders[orderId - 1];
   };
+  self.getOrderAsync = function(orderId) {
+    return new Promise((resolve,reject)=>{
+      if (orderId > 0 && orderId <= orders.length) {
+        resolve( orders[orderId - 1]);
+        throw new Error("Invalid order ID specified.")
+      }
+      $.get("/api/orders").done(data=>{
+        orders = data;
+        if (orderId <= 0 || orderId > orders.length) {
+          reject( new Error("Invalid order ID specified."));
+        }
+        resolve( orders[orderId - 1]);
+      });
 
+    })
+
+  };
   /**
    * Gets the orders count.
    *
@@ -46,14 +74,25 @@ onlineShop.ordersService = (function() {
   self.getOrdersCount = function() {
     return orders.length;
   };
-
+  self.getOrdersCountAsync = function() {
+    return new Promise((resolve,_)=>{
+      $.get("/api/orders").done(data=>{
+        orders = data;
+        resolve( orders.length);
+      });
+    });
+  };
   /**
    * Updates the orders list in the local storage.
    *
    * @private
    */
   function _updateLocalStorage() {
-    localStorage["orders"] = JSON.stringify(orders);
+
+    $.get("/api/orders").done(data=>{
+      orders = data;
+      console.log(orders);
+    });
   }
 
   // Initializes the orders list.
@@ -62,9 +101,10 @@ onlineShop.ordersService = (function() {
   // },err =>{
   //   console.loh
   // })
-  if (localStorage["orders"]) {
-    orders = JSON.parse(localStorage["orders"]);
-  }
+  // if (localStorage["orders"]) {
+  //   orders = JSON.parse(localStorage["orders"]);
+  // }
 
+  _updateLocalStorage();
   return self;
 })();

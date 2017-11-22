@@ -29,11 +29,20 @@ html
   footer
     p Oualid Mazouzi 1548314 - Yves Israel Ngudie 1719325
   script(type="text/javascript", src="./assets/js/jquery-3.2.1.min.js")
+  script(type="text/javascript" ,src="./assets/js/jquery.validate.min.js")
+  script(type="text/javascript" ,src="./assets/js/additional-methods.min.js")
+  script(type="text/javascript" ,src="./assets/js/messages_fr.js")
   script(type="text/javascript", src="./assets/scripts/utils.js")
   script(type="text/javascript", src="./assets/scripts/products.service.js")
   script(type="text/javascript", src="./assets/scripts/shopping-cart.service.js")
   script(type="text/javascript", src="./assets/scripts/shopping-cart.controller.js")
   script(type="text/javascript", src="./assets/scripts/products.controller.js")
+  script(type="text/javascript", src="./assets/scripts/orders.service.js")
+
   if title=='Produit'
       script(type="text/javascript", src="./assets/scripts/product.controller.js")
+  if title == 'Commande'
+        script(type="text/javascript", src="./assets/scripts/order.controller.js")
+  if title == 'Confirmation'
+    script(type="text/javascript", src="./assets/scripts/confirmation.controller.js")
 

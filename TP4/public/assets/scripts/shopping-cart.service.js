@@ -83,7 +83,22 @@ onlineShop.shoppingCartService = (function($, productsService) {
     }
     return total;
   };
+  self.getItemsCountAsync = function() {
+    return new Promise((resolve,reject)=>{
+      $.get("/api/shopping-cart").then(shoppingCart=>{
+        items={};
+        $.each(shoppingCart,(i,product)=>{
+          items[product.productId] = parseInt(product.quantity);
+        });
 
+        if(self._onUpdate) self._onUpdate();
+
+        resolve(self.getItemsCount());
+
+      },err => reject(err));
+    });
+
+  };
   /**
    * Gets the quantity associated with an item.
    *

@@ -52,10 +52,14 @@ var onlineShop = onlineShop || {};
   }, "La date d'expiration de votre carte de crédit est invalide.");
 
   // Initializes the view.
-  if (shoppingCartService.getItemsCount() <= 0) {
-    $("article").html("<h1>Votre panier est vide!<h1>");
-    return;
-  }
+  shoppingCartService.getItemsCountAsync().then(count =>{
+    // shoppingCartService.getItemsCount()
+    if (count <= 0) {
+      $("article").html("<h1>Votre panier est vide!<h1>");
+      return;
+    }
+  });
+
 
   orderForm.validate({
     rules: {

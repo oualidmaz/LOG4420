@@ -31,7 +31,7 @@ router.get("/", function(req, res) {
       });
     Product.findOne({id: req.body.productId}, function (err, product) {
       if (err || !product) {
-        return res.status(404).json({
+        return res.status(400).json({
           title: 'product ID not found!',
         });
       }
