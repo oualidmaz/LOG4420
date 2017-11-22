@@ -121,7 +121,7 @@ router.post("/", function (req, res) {
 });
 
 router.delete('/:id', function (req, res) {
-  Order.findOne({
+  Order.findOneAndRemove({
     id: req.params.id
   }, function (err, order) {
     if (err || !order) {
