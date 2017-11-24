@@ -26,18 +26,8 @@ onlineShop.shoppingCartService = (function($, productsService) {
       quantity = 1;
     }
     if (items[productId]) {
-      //items[productId] += quantity;
+      items[productId] += quantity;
       self.updateItemQuantity(productId,items[productId] + quantity);
-      // $.ajax({
-      //   url: `/api/shopping-cart/${productId}`,
-      //   type: 'PUT',
-      //   success: function (res) {
-      //     console.log(res);
-      //     _updateLocalStorage();
-      //   },
-      //   data: JSON.stringify({productId,quantity:items[productId]}),
-      //   contentType: "application/json"
-      // });
 
     } else {
       items[productId] = quantity;
@@ -88,13 +78,10 @@ onlineShop.shoppingCartService = (function($, productsService) {
       $.get("/api/shopping-cart").then(shoppingCart=>{
         items={};
         $.each(shoppingCart,(i,product)=>{
-          items[product.productId] = parseInt(product.quantity);
+          items[parseInt(product.productId)] = parseInt(product.quantity);
         });
-
         if(self._onUpdate) self._onUpdate();
-
         resolve(self.getItemsCount());
-
       },err => reject(err));
     });
 
@@ -148,7 +135,6 @@ onlineShop.shoppingCartService = (function($, productsService) {
         data: JSON.stringify({productId,quantity:items[productId]}),
         contentType: "application/json"
       });
-     // _updateLocalStorage();
     }
   };
 
@@ -171,7 +157,6 @@ onlineShop.shoppingCartService = (function($, productsService) {
       });
       items[productId] = undefined;
     }
-   // _updateLocalStorage();
   };
 
   /**
@@ -188,7 +173,6 @@ onlineShop.shoppingCartService = (function($, productsService) {
       },
       contentType: "application/json"
     });
-    //_updateLocalStorage();
   };
 
   /**
