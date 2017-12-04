@@ -124,8 +124,11 @@ function validateTotalAmount(client, productsList) {
  * @param productsList  The expected list to use.
  */
 function validateShoppingCartWithAPI(client, productsList) {
+
   client.reqGet("http://localhost:8000/api/shopping-cart", function(err, response) {
+
     if (!err) {
+
       var isValid = productsList.length === 0 || response.length === productsList.length &&
         response.every(function(item) {
           return productsList.find(function(product) {

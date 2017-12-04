@@ -29,7 +29,7 @@ router.get("/", function (req, res) {
         });
       }
       products = products.sort(criteria);
-      res.status(200).json(products);
+      return res.status(200).json(products);
     });
   } else {
     Product.find({}, function (err, products) {
@@ -40,7 +40,7 @@ router.get("/", function (req, res) {
         });
       }
       products = products.sort(criteria);
-      res.status(200).json(products);
+      return res.status(200).json(products);
     });
   }
 
@@ -53,7 +53,7 @@ router.get("/:id", function (req, res) {
         title: 'product ID not found!',
       });
     }
-    res.status(200).json(product);
+    return res.status(200).json(product);
   });
 });
 
@@ -99,7 +99,7 @@ router.get("/:id", function (req, res) {
     //     return res.status(400).json({
     //     title:`La valeur de ${prop} est invalide!`
     //   })
-    //   } 
+    //   }
 
     // });
 
@@ -110,7 +110,7 @@ router.get("/:id", function (req, res) {
           error : err
         });
       }
-     res.status(201).json({
+     return res.status(201).json({
         title : 'Product Saved.'
       });
     });
@@ -134,7 +134,7 @@ router.get("/:id", function (req, res) {
               error : err
             });
           }
-          res.status(204).json({
+          return res.status(204).json({
             title : 'Product Deleted.'
           });
         });
@@ -152,7 +152,7 @@ router.get("/:id", function (req, res) {
             error : err
           });
         }
-        res.status(204).json({
+        return res.status(204).json({
           title : 'Products Deleted'
         });
     });

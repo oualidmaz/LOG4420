@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
         error: err
       });
     }
-    res.status(200).json(orders);
+    return res.status(200).json(orders);
   });
 });
 
@@ -26,7 +26,7 @@ router.get("/:id", function (req, res) {
         title: 'Order ID not found !',
       });
     }
-    res.status(200).json(order);
+    return res.status(200).json(order);
   });
 });
 
@@ -75,24 +75,17 @@ router.post("/", function (req, res) {
     });
   }
 
-  order.products.forEach((product) => {
-    if (!Number.isInteger(product.id))
-      return res.status(400).json({
-        title: 'Invalide ID product !'
-      });
-    if (!Number.isInteger(product.quantity))
-      return res.status(400).json({
-        title: 'Invalide product quantity !'
-      });
-  });
+console.log(order);
 
+  if(!order
+      .products
+      .every(product =>(Number.isInteger(parseInt(product.id))||Number.isInteger(parseInt(product.productId))) && Number.isInteger(parseInt(product.quantity))))
+    return res.status(400).json({
+            title: 'Invalid product id or quantity !'
+          });
 
   let ids = order.products.map(p => p.id);
-  Product.find({
-    id: {
-      $in: ids
-    }
-  }, (err, result) => {
+  Product.find({id: {$in: ids}}, (err, result) => {
     if (result)
       if (result.length < ids.length)
         return res.status(400).json();
@@ -105,17 +98,17 @@ router.post("/", function (req, res) {
         });
       }
 
-      res.status(201).json({
+      return res.status(201).json(
+        {
         title: 'Order Saved.',
         order: {
           id: body.id,
           name: body.name
         }
-      });
+      }
+      );
     });
   });
-
-
 });
 
 router.delete('/:id', function (req, res) {
@@ -135,7 +128,7 @@ router.delete('/:id', function (req, res) {
             error: err
           });
         }
-        res.status(204).json({
+        return res.status(204).json({
           title: 'Order Deleted.'
         });
       });
@@ -152,7 +145,7 @@ router.delete('/', function (req, res) {
           error: err
         });
       }
-      res.status(204).json({
+      return res.status(204).json({
         title: 'Orders Deleted'
       });
     });

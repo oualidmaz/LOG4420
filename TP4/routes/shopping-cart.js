@@ -3,15 +3,15 @@ var router = express.Router();
 var Product = require('../models/productModel');
 
 router.get("/", function(req, res) {
-    res.status(200).json(req.session.shoppingCart||(req.session.shoppingCart=[]));
+    return res.status(200).json(req.session.shoppingCart||(req.session.shoppingCart=[]));
   })
   .get("/:id",function(req,res){
     req.session.shoppingCart =req.session.shoppingCart ||[];
     let product =req.session.shoppingCart.filter(p => p.productId == req.params.id);
     if(product.length > 0)
-        res.status(200).json( product[0]);
+        return res.status(200).json( product[0]);
     else{
-      res.status(404).json({
+      return res.status(404).json({
         title: 'product ID not found!',
       });
     }
@@ -36,9 +36,9 @@ router.get("/", function(req, res) {
         });
       }
 
-      var item = {productId:req.body.productId,quantity: req.body.quantity};
+      var item = {productId:parseInt(req.body.productId),quantity: parseInt(req.body.quantity)};
       req.session.shoppingCart.push(item);
-      res.status(201).json(item);
+      return res.status(201).json(item);
     });
   })
   .put("/:id",function(req,res){
@@ -61,14 +61,13 @@ router.get("/", function(req, res) {
       var item = req.session.shoppingCart.filter(p => p.productId == req.params.id)[0];
       item.quantity = req.body.quantity;
 
-      res.status(204).json();
+      return res.status(204).json();
     });
   })
   .delete("/:id",function(req,res){
     req.session.shoppingCart = req.session.shoppingCart||[];
 
     let items = req.session.shoppingCart.filter(p => p.productId == req.params.id);
-
 
     if(items.length == 0)
       return res.status(404).json({
