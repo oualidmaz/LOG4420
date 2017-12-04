@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
   { path: 'accueil', component: HomeComponent },
   { path: 'produits', component: ProductsComponent },
-  { path: 'produits/:id', component: ProductComponent },
+  { path: 'produits/:id', component: ProductComponent, pathMatch: 'full' },
   { path: 'contact', component: ContactComponent },
   { path: 'panier', component: ShoppingCartComponent },
   { path: 'commande', component: OrderComponent },

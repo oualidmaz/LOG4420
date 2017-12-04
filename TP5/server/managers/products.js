@@ -40,6 +40,7 @@ var self = {};
  *                        - data: the list of the products.
  */
 self.getProducts = function(criteria, category) {
+  console.log(criteria);
   var deferred = Q.defer();
   var filter = {};
 

@@ -28,5 +28,10 @@ mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
-// TODO: Modifier le connect string par le votre!
-mongoose.connect("mongodb://...", { useMongoClient: true });
+mongoose.connect("mongodb://shopping:Password+1@ds149495.mlab.com:49495/log4420", { useMongoClient: true }, (err, res) => {
+  if (err) {
+    console.log('Unable to connect to mongoLab .... ' + err);
+  } else {
+    console.log('Successfully connected to mongoLab :)')
+  }
+});

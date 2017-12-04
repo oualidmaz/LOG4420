@@ -1,3 +1,4 @@
+import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,18 +11,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
+  product: any;
+
   /**
    * Initializes a new instance of the ProductComponent class.
    *
    * @param route                   The active route.
    */
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productsService: ProductsService) { 
+    
+  }
 
   /**
    * Occurs when the component is initialized.
    */
   ngOnInit() {
     const productId = this.route.snapshot.paramMap.get('id');
-    // TODO: Compléter la logique pour afficher le produit associé à l'identifiant spécifié (productId).
+    this.getProduct(productId);
   }
+
+  getProduct(productId) {
+    this.productsService.getProduct(productId).then((product) => {
+      this.product = product;
+    })
+    .catch((error) => console.error(error));
+  }
+
+
 }
