@@ -7,8 +7,7 @@
     <div class="col">
       <section>
         <h2>Description</h2>
-        <p id="product-desc">
-            {{product?.description}}
+        <p id="product-desc" [innerHtml]="product?.description"> 
         </p>
       </section>
       <section>
