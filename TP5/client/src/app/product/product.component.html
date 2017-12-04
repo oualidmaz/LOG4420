@@ -2,7 +2,7 @@
   <h1 id="product-name">{{product?.name}}</h1>
   <div class="row">
     <div class="col">
-      <img id="product-image" alt="{{product?.name}}" src="./assets/img/{{product?.image}}">
+      <img id="product-image" alt="{{product?.name}}" src="{{(product !== undefined) ? ('./assets/img/'+product.image) : ''}}">
     </div>
     <div class="col">
       <section>
@@ -28,7 +28,7 @@
           <i class="fa fa-cart-plus"></i>&nbsp; Ajouter
         </button>
       </form>
-      <p>Prix: <strong id="product-price">{{product?.price | formatPrice}}&thinsp;$</strong></p>
+      <p>Prix: <strong id="product-price">{{(product !== undefined) ? (product.price | formatPrice) : '' }}&thinsp;$</strong></p>
     </div>
   </div>
   <div class="dialog" id="dialog" *ngIf="false">

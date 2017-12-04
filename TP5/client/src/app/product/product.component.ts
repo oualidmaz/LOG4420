@@ -19,7 +19,6 @@ export class ProductComponent implements OnInit {
    * @param route                   The active route.
    */
   constructor(private route: ActivatedRoute, private productsService: ProductsService) { 
-    
   }
 
   /**
@@ -30,7 +29,7 @@ export class ProductComponent implements OnInit {
     this.getProduct(productId);
   }
 
-  getProduct(productId) {
+  getProduct(productId): void {
     this.productsService.getProduct(productId).then((product) => {
       this.product = product;
     })

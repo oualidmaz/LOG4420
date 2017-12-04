@@ -28,7 +28,6 @@ export class ProductsComponent {
   sortProducts(sortingCriteria, category): void {
     this.productsService.getProducts(sortingCriteria, category).then((products) => {
       this.products = products;
-      console.log(this.products);
     })
       .catch((error) => console.error(error));
   }

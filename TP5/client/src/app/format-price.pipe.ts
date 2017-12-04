@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FormatPricePipe implements PipeTransform {
 
   transform(price: any): any {
-    console.log('pipe');
     return price.toFixed(2).replace('.', ',');
   }
 
