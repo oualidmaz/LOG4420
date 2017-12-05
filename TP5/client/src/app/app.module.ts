@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'panier', component: ShoppingCartComponent },
   { path: 'commande', component: OrderComponent },
   { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'notfound', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

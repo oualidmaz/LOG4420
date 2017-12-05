@@ -1,6 +1,6 @@
 import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 /**
  * Defines the component responsible to manage the product page.
@@ -18,7 +18,8 @@ export class ProductComponent implements OnInit {
    *
    * @param route                   The active route.
    */
-  constructor(private route: ActivatedRoute, private productsService: ProductsService) { 
+  constructor(private route: ActivatedRoute, private productsService: ProductsService,
+              private router: Router) { 
   }
 
   /**
@@ -31,7 +32,10 @@ export class ProductComponent implements OnInit {
 
   getProduct(productId): void {
     this.productsService.getProduct(productId).then((product) => {
-      this.product = product;
+      if(product)
+        this.product = product;
+      else
+        this.router.navigate(['/notfound']);
     })
     .catch((error) => console.error(error));
   }
