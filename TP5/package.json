@@ -9,6 +9,7 @@
     "clean": "cd ./client && rm -rf node_modules && cd .. && cd ./server && rm -rf node_modules && cd .. && rm -rf node_modules"
   },
   "devDependencies": {
+    "@angular/cli": "^1.5.5",
     "assert": "^1.4.1",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",

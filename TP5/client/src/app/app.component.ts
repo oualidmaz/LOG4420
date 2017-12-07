@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { OnShoppingCartUpdated } from './shoppping-cart.service';
+import { ShopppingCartService } from 'app/shoppping-cart.service';
+import { Component, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 /**
  * Defines the main component of the application.
@@ -7,7 +11,11 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent  implements OnInit, OnShoppingCartUpdated {
+ 
+  subscription: Subscription;
+  count: number;
+
 
   // TODO: Modifier le nom des auteurs pour vos noms
   readonly authors = [
@@ -15,5 +23,21 @@ export class AppComponent {
     'Yves Israel Ngudie 1719325'
   ];
 
-  // TODO: À compléter
+  /**
+   *
+   */
+  constructor(private shoppingCart:ShopppingCartService) {
+      this.shoppingCart.subscribe(this);
+  }
+  ngOnInit(): void {
+    this.shoppingCart.itemCount()
+                     .subscribe(count=> this.count = count);
+  }
+  onCartUpdated() {
+    this.count = this.shoppingCart.count
+    console.log(this.count);
+  }
+  get cartItems(){
+    return this.count;
+  }
 }

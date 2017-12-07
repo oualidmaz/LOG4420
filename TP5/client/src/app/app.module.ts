@@ -1,3 +1,4 @@
+import { OrderService } from './order.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsService } from './products.service';
 import { FormatPricePipe } from './format-price.pipe';
+import { ShopppingCartService } from 'app/shoppping-cart.service';
+import { PadLeftPipe } from './pad-left.pipe';
 
 // Application routes
 const appRoutes: Routes = [
@@ -41,7 +44,8 @@ const appRoutes: Routes = [
     OrderComponent,
     ConfirmationComponent,
     PageNotFoundComponent,
-    FormatPricePipe
+    FormatPricePipe,
+    PadLeftPipe
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    ProductsService
+    ProductsService, ShopppingCartService,OrderService
   ],
   bootstrap: [AppComponent]
 })

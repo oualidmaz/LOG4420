@@ -1,4 +1,5 @@
 <article>
-  <h1>Votre commande est confirmée <span id="name">Antoine Béland</span>!</h1>
-  <p>Votre numéro de confirmation est le <span id="confirmation-number">00001</span>.</p>
+  <h1>Votre commande est confirmée <span id="name">{{order?.firstName}} {{order?.lastName}}</span>!</h1>
+  <p>Votre numéro de confirmation est le <span id="confirmation-number">{{order?.orderNumber|padLeft}}</span>.</p>
+
 </article>

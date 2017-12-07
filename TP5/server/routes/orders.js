@@ -24,8 +24,11 @@ router.get("/:id", function(req, res) {
 router.post("/", function(req, res) {
   ordersManager.createOrder(req.body).done(function(err) {
     if (err) {
+      console.log(err);
+      console.log("errrrrrrrrr");
       res.status(400).send();
     } else {
+      console.log("bla bla");
       res.status(201).send();
     }
   });
