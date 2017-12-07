@@ -49,10 +49,10 @@ self.getOrder = function(orderId) {
   var deferred = Q.defer();
   Order.findOne({ id: orderId }, { _id: 0 }).lean().exec(function(err, order) {
     if (err || !order) {
-      console.log("err=",err);
+      
       deferred.resolve({ err: true, data: null });
     } else {
-      console.log("data=",order);
+      
       deferred.resolve({ err: false, data: order });
     }
   });
@@ -75,7 +75,7 @@ self.createOrder = function(order) {
       return property in order;
     });
     if (!isValid) { // Missing properties
-      console.log("bla bla");
+      
       deferred.resolve(true);
       return deferred.promise;
     }
@@ -98,11 +98,11 @@ self.createOrder = function(order) {
       return productIsValid;
     });
     if (!isValid) { // Invalid data
-      console.log("bla blaknkjbkjbk");
+      
       deferred.resolve(true);
       return deferred.promise;
     }
-    console.log("bla mjbkbjbbla");
+    
     self.getOrder(order.id).done(function(result) {
       if (result.data === null) {
         new Order(order).save(function(err) {
